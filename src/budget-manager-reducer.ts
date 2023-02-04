@@ -18,12 +18,12 @@ export type BudgetManagerState = {
 
 type SetExpenseName = {type:"SET_EXPENSE_NAME", payload:string};
 type SetExpenseCost = {type:"SET_EXPENSE_COST", payload:number};
-type SetEssential = {type:"SET_ESSENTIAL", payload:string | undefined};
+type SetEssential = {type:"SET_ESSENTIAL", payload:boolean};
 type AddExpense = {type:"ADD_EXPENSE"};
 type DeleteUnpaidExpense = {type:"DELETE_UNPAID", payload:number};
 type DeletePaidExpense = {type:"DELETE_PAID", payload:number};
 type MarkExpensePaid = {type:"MARK_PAID", payload:number};
-type BudgetManagerAction = SetExpenseName | SetExpenseCost | SetEssential | AddExpense | DeleteUnpaidExpense | DeletePaidExpense | MarkExpensePaid;
+export type BudgetManagerAction = SetExpenseName | SetExpenseCost | SetEssential | AddExpense | DeleteUnpaidExpense | DeletePaidExpense | MarkExpensePaid;
 
 export function budgetManagerReducer(state: BudgetManagerState, action: BudgetManagerAction): BudgetManagerState{
     const newState: BudgetManagerState = JSON.parse(JSON.stringify(state));
@@ -41,23 +41,27 @@ export function budgetManagerReducer(state: BudgetManagerState, action: BudgetMa
         }
 
         case "SET_ESSENTIAL":{
-            newState.essentialInput = action.payload ? true:false;
+            console.log(action.payload)
+            newState.essentialInput = action.payload;
             return newState;
         }
 
         case "ADD_EXPENSE":{
             const expense: Expense = {id: Math.random(), name: newState.nameInput, cost: newState.costInput, essential: newState.essentialInput};
             newState.unpaidCosts.push(expense)
+            updateTotalCosts(newState)
             return newState;
         }
 
         case "DELETE_UNPAID":{
             newState.unpaidCosts = newState.unpaidCosts.filter(expense => expense.id !== action.payload);
+            updateTotalCosts(newState)
             return newState;
         }
 
         case "DELETE_PAID":{
             newState.paidCosts = newState.paidCosts.filter(expense => expense.id !== action.payload);
+            updateTotalCosts(newState)
             return newState;
         }
 
@@ -68,5 +72,11 @@ export function budgetManagerReducer(state: BudgetManagerState, action: BudgetMa
             newState.paidCosts.push(expense);
             return newState;
         }
+    }
+
+    function updateTotalCosts(state: BudgetManagerState){
+        state.totalCosts = 0;
+        state.paidCosts.forEach((e)=>newState.totalCosts+=e.cost)
+        state.unpaidCosts.forEach((e)=>newState.totalCosts+=e.cost)
     }
 }
