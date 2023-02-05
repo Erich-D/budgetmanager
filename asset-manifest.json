@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/budgetmanager/static/js/main.f5d90cfe.js",
+    "main.js": "/budgetmanager/static/js/main.93fdc7ec.js",
     "index.html": "/budgetmanager/index.html",
-    "main.f5d90cfe.js.map": "/budgetmanager/static/js/main.f5d90cfe.js.map"
+    "main.93fdc7ec.js.map": "/budgetmanager/static/js/main.93fdc7ec.js.map"
   },
   "entrypoints": [
-    "static/js/main.f5d90cfe.js"
+    "static/js/main.93fdc7ec.js"
   ]
 }
