@@ -52,7 +52,7 @@ export function budgetManagerReducer(state: BudgetManagerState, action: BudgetMa
 
         case "SET_MAX_BUDGET":{
             newState.maxBudget = action.payload;
-            budgetExceded();
+            //budgetExceded();
             return newState;
         }
 
