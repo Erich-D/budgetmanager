@@ -13,6 +13,7 @@ export function UnpaidExpenseList(props: unpaidExpenseProps){
             <li>
                 <button onClick={()=>props.dispatch({type:"DELETE_UNPAID", payload:ex.id})}>Delete</button>
                 {`Expense Name: ${ex.name} Expense Cost: $${ex.cost} Is Essential: ${ex.essential}`}
+                <button onClick={()=>props.dispatch({type:"EDIT_EXPENSE", payload:ex.id})}>Edit</button>
                 <button onClick={()=>props.dispatch({type:"MARK_PAID", payload:ex.id})}>Mark Paid</button>
             </li>)}
         </ul>

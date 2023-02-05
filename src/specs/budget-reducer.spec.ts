@@ -3,9 +3,14 @@ import { BudgetManagerState, budgetManagerReducer } from "../budget-manager-redu
 
 test("ADD Expense", () => {
     const testState: BudgetManagerState = {
+        editMode: false,
+        editId: 0,
+        maxBudget: 2500,
         nameInput: "power",
         costInput: 250,
         essentialInput: true,
+        essentialSortInput: false,
+        costSortInput: false,
         unpaidCosts: [],
         paidCosts: [],
         totalCosts: 0
@@ -19,9 +24,14 @@ test("ADD Expense", () => {
 
 test("DELETE Unpaid", () => {
     const testState: BudgetManagerState = {
+        editMode: false,
+        editId: 0,
+        maxBudget: 2500,
         nameInput: "power",
         costInput: 250,
         essentialInput: true,
+        essentialSortInput: false,
+        costSortInput: false,
         unpaidCosts: [{id:100, name: "rent", cost: 1250, essential: true}],
         paidCosts: [{id:200, name: "phone", cost: 250, essential: false}],
         totalCosts: 1500
@@ -35,9 +45,14 @@ test("DELETE Unpaid", () => {
 
 test("DELETE Paid", () => {
     const testState: BudgetManagerState = {
+        editMode: false,
+        editId: 0,
+        maxBudget: 2500,
         nameInput: "power",
         costInput: 250,
         essentialInput: true,
+        essentialSortInput: false,
+        costSortInput: false,
         unpaidCosts: [{id:100, name: "rent", cost: 1250, essential: true}],
         paidCosts: [{id:200, name: "phone", cost: 250, essential: false}],
         totalCosts: 1500
@@ -51,9 +66,14 @@ test("DELETE Paid", () => {
 
 test("MARK Paid", () => {
     const testState: BudgetManagerState = {
+        editMode: false,
+        editId: 0,
+        maxBudget: 2500,
         nameInput: "power",
         costInput: 250,
         essentialInput: true,
+        essentialSortInput: false,
+        costSortInput: false,
         unpaidCosts: [{id:100, name: "rent", cost: 1250, essential: true}],
         paidCosts: [{id:200, name: "phone", cost: 250, essential: false}],
         totalCosts: 1500

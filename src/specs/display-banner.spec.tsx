@@ -6,6 +6,7 @@ test("Display expenses", async ()=>{
     const displayValues = {
         title: "test Display",
         value: 20,
+        overMax: false,
         prefix: "$$$"
     }
 
